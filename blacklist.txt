@@ -1,0 +1,9 @@
+/#This is the blacklist file for MassRename
+/#lines begining with '/#' are comments
+/# add '*' after a directory to blacklist all subdirectories
+C:\
+C:\NVIDIA
+C:\ProgramData
+C:\Windows\*
+D:\*
+C:\Users
