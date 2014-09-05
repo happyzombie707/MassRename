@@ -1,6 +1,3 @@
-#todo
-#	if the directory has a * at the end, all sub directories are blacklisted
-#	for example C:\Users\bob\* means everything inside \bob\ are blacklisted
 import string
 import os
 from os import listdir
