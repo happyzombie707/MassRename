@@ -50,8 +50,6 @@ def firstRun():
 	firstRun.close()
 
 def initialize():
-
-	
 	if (os.name == "nt"):
 		os.system("cls")
 	else:
@@ -83,8 +81,7 @@ def main():
 	while not valid:
 		stringPath = raw_input("Dir : ")
 		valid = canAccess(stringPath, subBlacklist, blacklist)
-
-
+		
 	dirFiles = [ f for f in listdir(stringPath) if isfile(join(stringPath,f)) ]
 
 	rename(stringPath, dirFiles)
