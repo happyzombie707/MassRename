@@ -2,7 +2,11 @@ import string
 import os
 from os import listdir
 from os.path import isfile, join
-
+def seperator():
+	if (os.name == "nt"):
+		return '\\'
+	else:
+		return '/'
 def canAccess(stringPath, subBlacklist, blacklist):
 	if (not os.path.exists(stringPath)):
 		print("Directory does not exist.")
@@ -24,9 +28,9 @@ def rename(stringPath, dirFiles):
 		if (newName != ''):
 			if (not '.' in newName):
 				fileType = string.rsplit(dirFiles[x],'.')
-				os.rename((stringPath +'\\'+ dirFiles[x]), (stringPath +'\\'+ newName+'.'+fileType[len(fileType)-1]))
+				os.rename((stringPath +seperator()+ dirFiles[x]), (stringPath +seperator()+ newName+'.'+fileType[len(fileType)-1]))
 			else:
-				os.rename((stringPath +'\\'+ dirFiles[x]), (stringPath +'\\'+ newName))
+				os.rename((stringPath +seperator()+ dirFiles[x]), (stringPath +seperator()+ newName))
 			print("Success!\n")
 
 def addBlacklist(firstRun):
@@ -57,7 +61,7 @@ def initialize():
 
 	if(not os.path.exists("blacklist.txt")):
 		firstRun()
-	blackFile = open("blacklist.txt","r")	
+	blackFile = open("blacklist.txt","r")
 
 	blacklist = []
 	subBlacklist = []
@@ -81,7 +85,7 @@ def main():
 	while not valid:
 		stringPath = raw_input("Dir : ")
 		valid = canAccess(stringPath, subBlacklist, blacklist)
-		
+
 	dirFiles = [ f for f in listdir(stringPath) if isfile(join(stringPath,f)) ]
 
 	rename(stringPath, dirFiles)
